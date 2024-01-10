@@ -1,0 +1,30 @@
+Plany: Taxi Driver
+
+Funkcje:
+-- Rendering mapy miasta, ze 3 różne domki, puste miejsca pomiędzy domkami
+-- Randomowo stawiane sklepy i warsztaty
+-- Żółta taksówka
+-- UI - kasa, stan auta
+-- Ludziki na chodniku czekająca na taxi z wykrzyknikiem
+-- Strzałka pokazująca kierunek do celu
+-- Mapa (opcjonalnie na koniec)
+Ludziki chaotycznie chodzące, trzeba ich unikać. Za przejechanie odbiera kasę lub goni policja (opcjonalnie na koniec)
+-- System kasy zarabiasz dowożąc ludzie
+-- Dźwięki lub kwestie tekstowe rodem z postala
+-- Główny bohater to The Taxi Dude
+-- upgrady w warsztatach: wytrzymałość auta, prędkość, naprawa auta
+Głód, kupowanie jedzenia w sklepach (opcjonalnie)
+-- Dźwięki
+-- Gigantyczny nuke po zniszczeniu auta pokazany z widoku mapy
+-- Wysiadanie z autka
+
+
+Featery do dodania:
+-- jeżdżenie po trawie spowalnia i psuje auto
+więcej domków - jeśli domek nie jest bezpośrednio przy drodze, to ma wyjeżdżoną ziemianą drogę
+-- kupowanie w warsztacie
+-- wyjechanie poza mapę powoduje wpadnięcie do wody (plusk + pomniejszające się auto)
+ludziki chcąbyć podwożone do domków - zamiast sklepu domek, do którego owozi się ludziki - przy kazdym skrzyżowaniu domek
+-- zmiana koloru przycisku w warsztacie w zależności od ilości kasy
+-- paliwo kończy się i trzeba tankować na stacji - stacje to shop1, dorobić w gimpie dystrybutor
+-- losowy town square miejsce

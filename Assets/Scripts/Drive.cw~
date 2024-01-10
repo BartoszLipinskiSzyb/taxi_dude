@@ -1,0 +1,88 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class Drive : MonoBehaviour
+{
+    public float maxSpeed = 2.0f;
+    public float acceleration = 0.05f;
+    public float deceleration = 0.02f;
+    private Vector3 speed = Vector3.zero;
+    public float minTurningSpeed = 0.1f;
+
+    private Vector3[] directions = {
+        new Vector3(0, 1, 0), new Vector3(1, 0, 0), new Vector3(0, -1, 0), new Vector3(-1, 0, 0) // CSS order
+    };
+    public int startingDirection = 1;
+
+    public int currentDirection;
+    public Vector3 currentAcceleration;
+
+    private SpriteRenderer spriteRenderer;
+    public Sprite sideSprite;
+    public Sprite backSprite;
+    public Sprite frontSprite;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentDirection = startingDirection;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public float lastDirectionChange = 0.0f;
+    public float directionChangeCooldown = 0.2f;
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        speed = directions[currentDirection] * Input.GetAxis("Vertical") * maxSpeed;
+
+        transform.Translate(speed * Time.deltaTime);
+
+        if (Math.Abs(Input.GetAxis("Vertical")) >= minTurningSpeed) {
+            if (Time.time - directionChangeCooldown > lastDirectionChange)
+            {
+                // Debug.Log("Mo¿na wciskaæ");
+                if(Input.GetAxisRaw("Horizontal") != 0.0f)
+                {
+                    currentDirection += (int)Input.GetAxisRaw("Horizontal") * Math.Sign(Input.GetAxis("Vertical"));
+                    lastDirectionChange = Time.time;
+                }
+            }
+            if (currentDirection < 0) currentDirection += 4;
+            currentDirection %= 4;
+
+            switch (currentDirection)
+            {
+                case 0:
+                    spriteRenderer.sprite = backSprite;
+                    transform.localScale = Vector3.one;
+                    break;
+                case 1:
+                    spriteRenderer.sprite = sideSprite;
+                    transform.localScale = Vector3.one;
+                    break;
+                case 2:
+                    spriteRenderer.sprite = frontSprite;
+                    transform.localScale = Vector3.one; 
+                    break;
+                case 3:
+                    spriteRenderer.sprite = sideSprite;
+                    transform.localScale = new Vector3(-1, 1, 1);
+                    break;
+            }
+        }
+    }
+
+    void OnCollisionEnter(Collision2D collision){
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            Debug.DrawRay(contact.point, contact.normal, Color.white);
+            Debug.Log("dzia¿a");
+        }
+        if (collision.relativeVelocity.magnitude > 2)
+            Debug.Log("uszkodzenie");
+    }}
