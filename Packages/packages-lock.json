@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.cloudedmountain.ide.neovim": {
-      "version": "file:/home/blipin/Sources/com.cloudedmountain.ide.neovim",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
